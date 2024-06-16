@@ -42,4 +42,12 @@ class GameViewController: UIViewController {
 
         mtkView.delegate = renderer
     }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let deltaX = (touch.location(in: mtkView).x - touch.previousLocation(in: mtkView).x) / self.view.frame.width
+        let deltaY = (touch.location(in: mtkView).y - touch.previousLocation(in: mtkView).y) / self.view.frame.height
+        
+        renderer.rotate(x: Float(deltaX), y: Float(deltaY))
+    }
 }

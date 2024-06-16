@@ -41,4 +41,8 @@ class GameViewController: NSViewController {
 
         mtkView.delegate = renderer
     }
+    
+    override func mouseDragged(with event: NSEvent) {
+        renderer.rotate(x: Float(event.deltaX) / Float(self.view.frame.width), y: Float(event.deltaY) / Float(self.view.frame.width))
+    }
 }
